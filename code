@@ -26,20 +26,20 @@ module pipeline_register #(
         if (!rst_n) begin
             valid_reg <= 1'b0;
             data_reg  <= '0;
-        end else begin
-            // If we are ready and valid data is arriving, capture it.
+        end
+       else begin
+           
             if (in_ready) begin
                 if (in_valid) begin
                     valid_reg <= 1'b1;
                     data_reg  <= in_data;
-                end else if (out_ready) begin
-                    // If input is NOT valid, but we just pushed data downstream,
-                    // we become empty.
+                end
+                else if (out_ready) begin
                     valid_reg <= 1'b0;
                 end
+                end
             end
-        end
-    end
+       end
 
     
     assign out_data  = data_reg;
