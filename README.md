@@ -34,3 +34,9 @@ To prevent data loss, the module signals it is ready to accept new input (`in_re
 
 ```systemverilog
 assign in_ready = (!valid_reg) || out_ready;
+
+### 2. The "Update" Logic (Data Path)
+Data is captured into the internal registers only when a successful handshake occurs at the input (`in_valid` && `in_ready`).
+
+* If `in_valid` is high and we are ready, the data is latched.
+* If the input stops sending valid data but the downstream is ready, the `valid_reg` is de-asserted to indicate the pipeline is now empty.
