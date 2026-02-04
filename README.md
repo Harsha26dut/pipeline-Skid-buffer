@@ -32,8 +32,7 @@ To prevent data loss, the module signals it is ready to accept new input (`in_re
 * **The Pipeline is Empty:** We have space to store new data.
 * **The Downstream is Ready:** Even if we are full, if the downstream module is asserting `out_ready`, the current data will leave in the same cycle that new data arrives (flow-through).
 
-```systemverilog
-assign in_ready = (!valid_reg) || out_ready;
+
 
 ### 2. The "Update" Logic (Data Path)
 Data is captured into the internal registers only when a successful handshake occurs at the input (`in_valid` && `in_ready`).
